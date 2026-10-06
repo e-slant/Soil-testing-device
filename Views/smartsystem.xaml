@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="smartAgriculture.Views.smartsystem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:smartAgriculture.Views"
+        xmlns:gv="clr-namespace:smartAgriculture.Models"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <gv:SystemGlobalVariable x:Key="gvm"/>
+    </UserControl.Resources>
+    <Grid Margin="300,10,120,20"><!--130-->
+        <Grid.Background>
+            <SolidColorBrush Color="#222b51"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="16*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="智能推荐" FontSize="35" Foreground="White" HorizontalAlignment="Center" Grid.Row="0"></Label>
+        <Button Content="推荐分析" Foreground="#f28500" FontSize="18" Grid.Row="2" Margin="200 0 200 0" Click="Button_Click"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="4" Margin="5,5,5,5" BorderBrush="#9da1b2" CornerRadius="2">
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="每日推荐" Foreground="White" FontSize="16" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <Label Content="   氮肥量:" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <Label Name="NitrogenFertilizer" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        <Label Content="  kg/ha" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                        <Label Content="   磷肥量:" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <Label Name="PhosphorusFertilizer" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        <Label Content="  kg/ha" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3">
+                        <Label Content="   钾肥量:" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <Label Name="PotassiumFertilizer" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        <Label Content="  kg/ha" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                        <Label Content="   浇水量:" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <Label Name="WateringAmount" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        <Label Content="  m³/ha" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="5">
+                        <Label Content="   作物选择:  " Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <!--<TextBox Text=" 0" FontSize="16"   Width="150" x:Name="setParity"
+                           VerticalAlignment="Center"/>-->
+                        <ComboBox SelectedIndex="0" Background="White" Foreground="#085f61"  FontSize="16"   Width="150" x:Name="crop"
+                           VerticalAlignment="Center">
+                            <ComboBoxItem  Content="小麦"/>
+                            <ComboBoxItem Content="玉米"/>
+                            <ComboBoxItem Content="大豆"/>
+                            <ComboBoxItem Content="棉花"/>
+                            <ComboBoxItem Content="稻谷"/>
+                            <ComboBoxItem Content="土豆"/>
+                            <ComboBoxItem Content="西红柿"/>
+                            <ComboBoxItem Content="苹果"/>
+                            <ComboBoxItem Content="葡萄"/>
+                            <ComboBoxItem Content="油菜"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border BorderThickness="4" Margin="5,5,5,5" BorderBrush="#9da1b2" CornerRadius="2" Grid.Column="1">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="作物推荐" Grid.ColumnSpan="2" Foreground="White" FontSize="16" HorizontalAlignment="Center"/>
+                    <Border Grid.Column="0" Grid.Row="1"  BorderBrush="#9da1b2" CornerRadius="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="0">
+                                <Label Name="Crop1" Content="未分析" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="1">
+                                <Label Name="Crop2" Content="未分析" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="2">
+                                <Label Name="Crop3" Content="未分析" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="3">
+                                <Label Name="Crop4" Content="未分析" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="4">
+                                <Label Name="Crop5" Content="未分析" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="0">
+                            <Label Content="匹配率:" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Name="Crop1_Rate" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Content="  %" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="1">
+                            <Label Content="匹配率:" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Name="Crop2_Rate" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Content="  %" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="2">
+                            <Label Content="匹配率:" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Name="Crop3_Rate" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Content="  %" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="3">
+                            <Label Content="匹配率:" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Name="Crop4_Rate" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Content="  %" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 0" Grid.Row="4">
+                            <Label Content="匹配率:" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Name="Crop5_Rate" Content="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                            <Label Content="  %" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

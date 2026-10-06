@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="smartAgriculture.Views.HistoryQuery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:smartAgriculture.Views" xmlns:gv="clr-namespace:smartAgriculture.Models"
+             mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <gv:SystemGlobalVariable x:Key="gvm"/>
+        <gv:Pagefixes x:Key="pagefixes"/>
+    </UserControl.Resources>
+    <Grid Margin="130,10,120,20">
+        <Grid.Background>
+            <SolidColorBrush Color="#222b51"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid FontSize="20" Grid.ColumnSpan="4" Grid.Row="0" x:Name="datasource"  AutoGenerateColumns="True" />
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="首  页" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0" MouseDown="TextBlock_MouseDown_3"/>
+            <TextBlock Text="上一页" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="1" MouseDown="TextBlock_MouseDown"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock  FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0"><Span>第<TextBlock x:Name="currentPage" Text="1"/></Span>页</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="下一页" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0" MouseDown="TextBlock_MouseDown_1"/>
+            <TextBlock Text="尾  页" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="1" MouseDown="TextBlock_MouseDown_2"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock  FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0">共<Span><TextBlock x:Name="totalPage" Text="1"/></Span>页</TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>
